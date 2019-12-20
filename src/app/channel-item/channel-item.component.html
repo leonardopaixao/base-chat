@@ -1,0 +1,14 @@
+<div class="channelItem"># 
+	<a (click)="getChannelMessages(channel)">
+		<span class="channelName" id="channelTitle">{{ channel_title }}</span>
+	</a>
+		<a *ngIf=notGeneral (click)="closeChannel(channel)">
+			<mat-icon style="float: right; padding-top: 3px">cancel</mat-icon>
+		</a>
+		<a *ngIf=notGeneral (click)="editChannel(channel)">
+			<!-- <mat-icon style="float: right; padding-top: 3px;">drag_indicator</mat-icon> -->
+			<mat-icon
+				style="float: right; padding-top: 3px; margin-right: 2px;"
+			>settings</mat-icon>
+		</a>
+</div>

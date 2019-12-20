@@ -1,1 +1,73 @@
-/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import '~@angular/cdk/overlay-prebuilt.css';
+* {
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+mat-dialog-container{
+    height: 300px !important;
+    width: 500px !important;
+}
+
+.mat-autocomplete-panel.mat-autocomplete-visible{
+    max-width: 25em;
+    display: block;
+    position: relative;
+    margin-top: auto;
+    /* visibility: hidden !important; */
+}
+
+#mat-autocomplete-0{
+    visibility: hidden;
+}
+
+.mat-dialog-container{
+    height: 60% !important;
+    width: 60em !important;
+}
+
+.mat-form-field{
+    display: block !important;
+    position: relative;
+    text-align: left;
+    height: auto;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    min-height:100%;
+    background: #eee;
+    background-attachment: fixed;
+    background-size: cover; 
+    font-family: "Open Sans", sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+app-chatroom {
+    display: flex;
+    flex-direction: column;
+}
+
+app-navbar{
+    width: 100%;
+}
+
+app-chat-form{
+    width: 100%;
+    display: flex;
+    white-space: nowrap;
+    overflow: none;
+}
+
+.message {
+  display: block;
+  height: auto;
+}
+/* html, body { height: 100% !important;  }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */

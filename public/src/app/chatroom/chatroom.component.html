@@ -1,0 +1,14 @@
+<div class="mainContent">
+
+	<div class="userListWrapper">
+		<app-user-list (emitter)="getChildData($event)"></app-user-list>
+	</div>
+	
+	<div #scroller class="feedWrapper">
+		<app-feed [channelKey]=channelKey></app-feed>
+	</div>
+</div>
+
+<div class="chatFormWrapper">
+	<app-chat-form [channelKey]=channelKey></app-chat-form>
+</div>

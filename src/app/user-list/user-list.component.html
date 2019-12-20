@@ -1,0 +1,21 @@
+<div class="userList">
+	<app-user-item 
+		(emitter)="getChannelMessages($event)"
+		[user]=user
+		*ngFor="let user of users">
+	</app-user-item>
+	<hr>
+	
+	<!-- general -->
+	<app-channel-item 
+		(output)=getChannelMessages($event)
+		[channel]=general>
+	</app-channel-item>
+	
+	<!-- available channels -->
+	<app-channel-item
+		(output)=getChannelMessages($event)
+		[channel]=channel
+		*ngFor="let channel of channels">
+	</app-channel-item>
+</div>

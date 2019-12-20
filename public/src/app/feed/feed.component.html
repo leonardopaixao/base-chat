@@ -1,0 +1,18 @@
+<!-- <div *ngIf="isGeneral; else isChannel" class="feed">
+  	<div class="message" *ngFor="let messageObject of feed">
+    	<app-message [chatMessageObject]=messageObject></app-message>
+	</div>
+</div>
+
+<ng-template #isChannel>
+	<div class="message" *ngFor="let messageObject of feed">
+		<app-message [chatMessageObject]=messageObject></app-message>
+	</div>
+</ng-template> -->
+
+
+<div class="feed">
+	<div class="message" *ngFor="let messageObject of feed">
+	  <app-message [chatMessageObject]=messageObject></app-message>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div *ngIf="replyOn;else notReply">
+	<div class="messageContainer" [ngClass]="{'isOwnMessageContainer':isOwnMessage}" style="height: auto">
+		<div class="messageData" [ngClass]="{'isOwnMessageData':isOwnMessage}">
+			<span class="sender" [ngClass]="{'isOwnSender':isOwnMessage}">
+				{{ username }}
+			</span>
+			<span class="timestamp" [ngClass]="{'isOwnTimestamp':isOwnMessage}">
+				{{ timeStamp }}
+			</span>
+		</div>
+		<div class="messageContent" [ngClass]="{'isOwnMessageContent':isOwnMessage}">
+			<div style="height: auto;">
+				{{ messageContent }}
+				<div class="replyContainer" style="float: right;">
+					<mat-icon id="reply-icon" (click)="replyMessage(messageContent)">reply</mat-icon>
+				</div>
+			</div>
+			<div *ngIf="replyOn" style="background: white; height: auto; width: auto">
+				<span style="color: grey; font-weight: normal">{{repliedMsg}}</span>
+			</div>
+		</div>
+	</div>
+</div>
+	
+<ng-template #notReply>
+	<div class="messageContainer" [ngClass]="{'isOwnMessageContainer':isOwnMessage}">
+		<div class="messageData" [ngClass]="{'isOwnMessageData':isOwnMessage}">
+			<span class="sender" [ngClass]="{'isOwnSender':isOwnMessage}">
+				{{ username }}
+			</span>
+			<span class="timestamp" [ngClass]="{'isOwnTimestamp':isOwnMessage}">
+				{{ timeStamp }}
+			</span>
+		</div>
+		<div class="messageContent" [ngClass]="{'isOwnMessageContent':isOwnMessage}">
+			<div>
+				{{ messageContent }}
+				<div class="replyContainer" style="float: right;">
+					<mat-icon id="reply-icon" (click)="replyMessage(messageContent)">reply</mat-icon>
+				</div>
+			</div>
+		</div>
+	</div>
+</ng-template>

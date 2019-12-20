@@ -1,0 +1,19 @@
+<div class="row" style="height: auto">
+  <div class="col-10">
+    <mat-form-field>
+      <input
+            class="replyInput"
+            placeholder="Reply this message!"
+            matInput
+            [(ngModel)]="repliedMessage"
+        />
+    </mat-form-field>
+  </div>
+  <div class="col-2">
+    <button mat-raised-button [mat-dialog-close]="repliedMessage" style="float: right">Send</button>
+  </div>
+</div>
+
+<mat-card style="height: auto;">
+  <span style="color: lightblue">{{data.message}}</span>
+</mat-card>

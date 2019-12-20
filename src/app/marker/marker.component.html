@@ -1,0 +1,43 @@
+<!-- <mat-nav-list> -->
+  <!-- <a href="https://keep.google.com/" mat-list-item (click)="openLink($event)">
+    <span mat-line>Google Keep</span>
+    <span mat-line>Add to a note</span>
+  </a>
+
+  <a href="https://docs.google.com/" mat-list-item (click)="openLink($event)">
+    <span mat-line>Google Docs</span>
+    <span mat-line>Embed in a document</span>
+  </a>
+
+  <a href="https://plus.google.com/" mat-list-item (click)="openLink($event)">
+    <span mat-line>Google Plus</span>
+    <span mat-line>Share with your friends</span>
+  </a>
+
+  <a href="https://hangouts.google.com/" mat-list-item (click)="openLink($event)">
+    <span mat-line>Google Hangouts</span>
+    <span mat-line>Show to your coworkers</span>
+  </a> -->
+
+  	<!-- <a *ngFor="let user of usersList" mat-list-item (click)="userSelected(user)">
+		<span mat-line>{{ user.firstName }} {{ user.lastName }}</span>
+	</a>
+
+
+</mat-nav-list> -->
+
+<!-- ------------------------------------------------------------------------------------------ -->
+
+<!-- <ul class="list-group">
+  <li class="list-group-item">Leonardo Paixão Rodrigues</li>
+  <li class="list-group-item">Bárbara Lima Gomes</li>
+  <li class="list-group-item">Lucia Regina Paixão Rodrigues</li>
+  <li class="list-group-item">Diego Paixão Rodrigues</li>
+  <li class="list-group-item">Alcy Dias Rodrigues</li>
+</ul> -->
+
+<ul #marker class="list-group" id="listGroup">
+    <li *ngFor="let user of usersList" class="list-group-item" style="cursor: pointer;" (click)="userSelected(user)">{{ user.firstName }} {{ user.lastName }}</li>
+</ul>
+
+<span id="taggedUser" style="display: none">{{ taggedUser }}</span>

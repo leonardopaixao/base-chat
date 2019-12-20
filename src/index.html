@@ -7,8 +7,79 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 </head>
 <body>
   <app-root></app-root>
+  
+  <script>
+    $(document).ready(function(){
+
+      $("#logout-span").click(function(){
+        window.location.reload();
+      })
+
+      $(document).on('click', '.cdk-overlay-pane.tm-file-preview-dialog-panel', function () {
+        // $(".cdk-overlay-pane.tm-file-preview-dialog-panel").remove();
+        $(".cdk-overlay-container").html('');
+        $("#chatFormInput").focus();
+      });  
+    
+    })
+    // $(document).ready(function(){
+
+    //   $(document).on('click', '.list-group-item', function () {
+    //     var taggedUser = $("#taggedUser").text();
+    //     var bkp = $("#tempTaggedUser").text();
+    //     $("#tempTaggedUser").text( bkp + ' ' + taggedUser );
+    // });
+
+    //   $("#chatFormInput").keyup( function(event) {
+    //     if( event.which != 13 ){ // autocomplete selected
+    //       var msg = $("#chatFormInput").val();
+    //       $("#messageValue").text( msg );
+    //     }else{
+    //       var choosen = $("#choosenData").text();
+    //       var msg = $("#messageValue").text();
+    //       if( choosen != '' ){
+    //         $("#chatFormInput").val( msg+choosen );
+    //         $("#choosenData").text('');
+    //       }else{
+    //         $("#chatFormInput").val('');
+    //       }
+    //     }
+    //   });
+
+    //   $("#chatFormInput").focusout( function(event) {
+    //     $(".cdk-overlay-container").hide();
+    //   });
+
+    //   $("#chatFormInput").focusin( function(event) {
+    //     $(".cdk-overlay-container").show();
+    //   });
+
+    //   $("#chatFormInput").keypress( function( event ) {
+    //     if( event.which == 64 ){ // @
+    //       $("#mat-autocomplete-0").css("visibility", "visible");
+    //     }else{
+    //       $("#mat-autocomplete-0").css("visibility", "hidden");
+    //     }
+    //   });
+    // });
+  </script>
+
+	<!-- <script> 
+		$(document).ready(function() {
+			$(".channelItem").click(function(){
+				console.log( 'closing channel...' );
+			});
+		}); 
+	</script> -->
 </body>
 </html>

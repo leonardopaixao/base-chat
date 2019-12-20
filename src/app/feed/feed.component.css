@@ -1,0 +1,10 @@
+.feed{
+    display: flex;
+    flex-direction: column;
+    max-height: -webkit-fill-available;
+}
+
+.message{
+    flex-direction: column;
+    margin: 10px 0;
+}

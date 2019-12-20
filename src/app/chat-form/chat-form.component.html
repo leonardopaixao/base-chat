@@ -1,0 +1,89 @@
+<!-- <form class="example-form">
+    <mat-form-field class="example-full-width" style="position: fixed">
+
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+            </mat-option>
+        </mat-autocomplete>
+
+        <input 
+            type="text"
+            placeholder="Enter a message"
+            matInput [formControl]="myControl"
+            [matAutocomplete]="auto"
+            class="chatInput"
+            style="width: 100%; font-size: larger"
+            [(ngModel)]="message"
+        >
+        
+    </mat-form-field>
+</form> -->
+
+<!-- <form class="example-form">
+    <mat-form-field class="example-full-width" style="position: fixed">
+        <input type="text" placeholder="Enter a message" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option">
+                {{option}}
+            </mat-option>
+        </mat-autocomplete>
+
+    </mat-form-field>
+</form> -->
+
+
+<div class="row" style="width: 100%">
+
+    <div class="col-11" style="padding-right: 0px; margin-right: 0px;">
+
+        <input 
+            class="chatInput"
+            placeholder="Enter a message"
+            style="width: 100%; font-size: larger; margin-top: 0px; padding-left: 30px"
+            [(ngModel)]="message" 
+            (keydown)="handleSubmit($event)"
+            id="chatFormInput"
+            value="mycurrtext"
+            onfocus="this.value = this.value;"
+        />
+
+        <mat-autocomplete id="autocompleteTrigger" #auto="matAutocomplete" (optionSelected)="getPosts($event.option.value)" (closed)="closed()">
+            <mat-option *ngFor="let userEmail of allUsers" [value]="userEmail">
+                {{userEmail}}
+            </mat-option>
+        </mat-autocomplete>
+
+        
+
+        <!-- <input
+            class="chatInput"
+            placeholder="Enter a message"
+            style="width: 100%; font-size: larger; margin-top: 0px; padding-left: 30px"
+            (keydown)="handleSubmit($event)"
+            matInput
+            [matAutocomplete]="auto"
+            id="chatFormInput"
+        />
+
+        <span id="messageValue" style="visibility: hidden"></span>
+        <span id="choosenData" style="visibility: hidden">{{choosenData}}</span>
+
+        <mat-autocomplete id="autocompleteTrigger" #auto="matAutocomplete" (optionSelected)="getPosts($event.option.value)" (closed)="closed()">
+            <mat-option *ngFor="let userEmail of allUsers" [value]="userEmail">
+                {{userEmail}}
+            </mat-option>
+        </mat-autocomplete> -->
+
+    </div>
+    
+    <div class="col-1" style="padding-left: 0px;">
+        <!-- <button class="chatButton" style="width: 128px" (click)=send()>Send</button> -->
+        <button class="chatButton" style="width: 128px" (click)=send()>Send</button>
+    </div>
+
+</div>
+
+<span id="tempTaggedUser" style="display: none">{{ markerTrigger }}</span>
+
