@@ -15,10 +15,10 @@
 }
 
 .feedWrapper {
-    background-color: #fff;
-    background: 
+    background-color: #003399;
+    /* background: 
         linear-gradient(181deg, rgba(100,200,255,0.6), rgba(0, 0, 0, 0.9)),
-        url('../../assets/img/chat_wolf_bkg.jpg') center center no-repeat;;
+        url('../../assets/img/chat_wolf_bkg.jpg') center center no-repeat;; */
     font-family: "Open Sans", sans-serif;
     font-size: 1.2em;
     flex: 5;
@@ -29,7 +29,7 @@
 
 .chatFormWrapper {
     display: flex;
-    height: 50px;
+    height: 4%;
     background-color: #eee;
     z-index: 3;
 }

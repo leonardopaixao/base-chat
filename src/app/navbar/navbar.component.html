@@ -18,9 +18,9 @@
 </div> -->
 
 <nav class="navbar navbar-dark bg-dark">
-    <div id="logo"></div>
+    <!-- <div id="logo"></div> -->
   	<div id="heading">
-		  <a routerLink="/">Student Now!</a>
+		  <!-- <a routerLink="/">Student Now!</a> -->
 	</div>
 	
  	 <div class="links">
@@ -34,7 +34,7 @@
     		<span id="userEmail" *ngIf="(user|async)?.uid">Olá, {{userEmail}}</span>
   		</span>
   		<span id="logout-span">
-    		<a *ngIf="(user|async)?.uid" routerLink="/login" (click)="logout()">Logout</a>
+    		<a *ngIf="(user|async)?.uid" href="#" (click)="logout()">Logout</a>
   		</span>
 	</div>
 </nav>

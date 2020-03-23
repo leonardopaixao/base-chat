@@ -7,11 +7,18 @@
   </div>
 </a> -->
 
-<a (click)="openDialog()">
+<a (click)="openPrivateChannel(user)">
   <div class="userItem" >
-    <span class="status" [ngClass]=(user.status)></span>
-    <span class="userName">
-      {{user.username}}
-    </span>
+    <div class="row">
+      <div class="col" style="width: fit-content;">
+        <span class="status" [ngClass]=(user.status)></span>
+        <span class="userName">
+          {{user.username}}
+        </span>
+      </div>
+      <div *ngIf="newMessage" class="col" style="max-width: fit-content; float: right; color:red;">
+          <mat-icon>message</mat-icon>
+      </div>
+    </div>
   </div>
 </a>

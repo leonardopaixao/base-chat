@@ -69,5 +69,9 @@ app-chat-form{
   display: block;
   height: auto;
 }
+
+.mat-checkbox-label{
+    padding-top: 7% !important;
+}
 /* html, body { height: 100% !important;  }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */

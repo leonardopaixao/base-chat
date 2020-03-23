@@ -154,6 +154,7 @@ export class ChatFormComponent implements OnChanges, OnInit {
 	}
 
 	public handleSubmit(event){
+		console.log( event.keyCode );
 		this.markerTrigger = 'no';
 		if( event.keyCode === 50 ){ //@
 			// this.storeMessage = false;

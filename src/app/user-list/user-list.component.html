@@ -4,8 +4,21 @@
 		[user]=user
 		*ngFor="let user of users">
 	</app-user-item>
-	<hr>
-	
+
+	<div class="block" style="display: block; height: 2em; width: 90%; padding-left: 1em; margin-top: 1em; color: blanchedalmond;">
+		<div class="row" style="width: 90%; padding-left: 40%;">
+			<div class="session-divider">
+				<span>Sessões</span>
+			</div>
+			
+			<div class="create-session-icon" style="padding-top: 2px; margin-left: 6px;">
+				<mat-icon id="new-channel-icon" style="cursor: pointer;">
+						<a (click)="openDialog()">add_circle</a>
+				</mat-icon>
+			</div>
+		</div>
+	</div>
+
 	<!-- general -->
 	<app-channel-item 
 		(output)=getChannelMessages($event)
@@ -19,3 +32,12 @@
 		*ngFor="let channel of channels">
 	</app-channel-item>
 </div>
+
+
+<!-- <br/>
+	<span id="divider" style="font-size: small; color: darkgray; margin-left: 4.5em">
+		Sessões
+	</span>
+	<a (click)="openDialog()">
+		<mat-icon id="new-channel-icon" style="cursor: pointer;">add_circle</mat-icon>
+	</a> -->

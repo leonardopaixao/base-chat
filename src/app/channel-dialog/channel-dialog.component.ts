@@ -91,6 +91,7 @@ export class ChannelDialogComponent implements OnInit {
 	openChannel(){
 		if( !this.channelKey ){
 			this.chatService.openChannel( this.selected, this.channelName );
+			console.log('channel opened!');
 		}else{
 			this.chatService.updateChannel( this.channelKey, this.selected, this.channelName );
 			console.log( 'Channel ' + this.channelKey + ' is up to date.' )

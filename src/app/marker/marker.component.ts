@@ -37,7 +37,7 @@ export class MarkerComponent implements OnInit, AfterViewInit {
 
 	public userSelected( data ): void{
 		
-		(<HTMLInputElement>document.getElementById("chatFormInput")).setRangeText(data.userName+' ');
+		(<HTMLInputElement>document.getElementById("chatFormInput")).setRangeText(data.username+' ');
 		this.taggedUser = data.email;
 		// this._bottomSheetRef.dismiss();
 		// event.preventDefault();

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>BaseChat</title>
+  <title>Chat</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,10 +25,15 @@
         window.location.reload();
       })
 
+
+
       $(document).on('click', '.cdk-overlay-pane.tm-file-preview-dialog-panel', function () {
         // $(".cdk-overlay-pane.tm-file-preview-dialog-panel").remove();
         $(".cdk-overlay-container").html('');
         $("#chatFormInput").focus();
+        var e = jQuery.Event("keydown");
+        e.which = 35; // end
+        $("#chatFormInput").trigger(e);
       });  
     
     })

@@ -36,7 +36,7 @@ export class ChatService {
 			this.getUser().valueChanges().subscribe(
 				(a:any) => {
 					if(a){
-						this.username = a.userName
+						this.username = a.username
 					}
 				}
 			);
@@ -69,7 +69,6 @@ export class ChatService {
 			channel	 	: channel,
 			reply		: replier
 		}
-		
 		const key = this.db.list(this.basePath).push(data).key;
 		const updated = {id: key}
 		this.db.object('/messages/' + key).update( updated ).catch( error => console.log( error ) );
@@ -139,9 +138,9 @@ export class ChatService {
 	public getTimeStamp(){
 		const now  = new Date();
 		const date = now.getUTCDate() + '.' +  ( now.getUTCMonth() + 1 ) + '.' + now.getUTCFullYear(); 
-		const time = now.getUTCHours() + ':' + now.getUTCMinutes();
-					
-		return time;
+		const time = now.getHours() + ':' + now.getUTCMinutes();
+
+		return date + ' ' + time;
 	}
 
 	public openChannel(guests, channelName){
@@ -160,6 +159,26 @@ export class ChatService {
 		return key;
 	}
 
+	public openPrivateChannel(guest){
+		const data = {
+			owner  : this.user.email,
+			guests : guest.email,
+			time   : this.getTimeStamp(),
+			status : 'open',
+			type   : 'private-room',
+			title  : guest.username
+		}
+
+		const customKey = guest.email.replace(".", "") + '_' + this.user.email.replace(".", "");
+
+		console.log(customKey);
+
+		this.db.database.ref('/channels').child(customKey).set(data);
+		const updated = {id: customKey}
+		this.db.object('/channels/' + customKey).update(updated).catch(error => console.log(error));
+		return customKey;
+	}
+
 	public updateChannel( channelKey, guests, channelName ){
 		const data = {
 			guests : guests,
@@ -175,5 +194,13 @@ export class ChatService {
 
 	public closeChannel(channelKey: string){
 		return this.db.object('/channels/' + channelKey).update({status : 'closed'}).catch(error => console.log(error));
+	}
+
+	public findPrivateChannel(){
+		return this.db.database.ref( '/channels' );
+	}
+
+	public getUserEmail(){
+		return this.user.email;
 	}
 }

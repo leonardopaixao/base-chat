@@ -5,3 +5,7 @@
     max-height: 65vh;
     overflow: auto;
 }
+
+.mat-checkbox-label{
+    padding-top: 7% !important;
+}

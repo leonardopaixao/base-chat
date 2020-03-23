@@ -5,6 +5,7 @@ import { ChatService } from '../services/chat.service';
 import { User } from '../models/user.model';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ChannelDialogComponent } from '../channel-dialog/channel-dialog.component';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-channel-item',
@@ -23,12 +24,16 @@ export class ChannelItemComponent implements OnInit, OnChanges {
 	public channel_title : string;
 	public generalKey 	 : string = '-LnUqMAYvH2hAE9WA_iC';
 	public notGeneral	 : boolean;
+	public authservice 	 : AuthService;
+	public channelOwner  : boolean;
 
-	constructor( private service: UserService, private cs: ChatService, public dialog: MatDialog ) {
+	constructor( private service: UserService, private cs: ChatService, public dialog: MatDialog, private authService: AuthService ) {
 		this.userService   = service;
 		this.channel_title = 'general';
 		this.chatService   = cs;
 		this.notGeneral    = true;
+		this.authservice   = authService;
+		this.channelOwner  = false;
 	}
 	
 	ngOnInit(){	}
@@ -38,10 +43,21 @@ export class ChannelItemComponent implements OnInit, OnChanges {
 			this.channel_title = this.channel['title'];
 			if( this.channel.id == this.generalKey )
 				this.notGeneral = false;
+			
+			this.authservice.authUser().subscribe(
+				ref => {
+					if( ref ){
+						if( ref.email == this.channel['owner'] ){
+							this.channelOwner = true;
+						}
+					}
+				}
+			);
 		}
 	}
 
 	public getChannelMessages(channel){
+		console.log( channel.id );
 		this.output.emit(channel.id);
 	}
 

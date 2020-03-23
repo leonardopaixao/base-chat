@@ -4,6 +4,8 @@ import { User } from '../models/user.model';
 import { ChatService } from '../services/chat.service';
 import { Channel } from '../models/channel.model';
 import { AuthService } from '../services/auth.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ChannelDialogComponent } from '../channel-dialog/channel-dialog.component';
 
 @Component({
   selector: 'app-user-list',
@@ -25,7 +27,7 @@ export class UserListComponent implements OnInit{
 	public authService : AuthService;
 	public userEmail   : string;
 
-	constructor(private chat: ChatService, private auth: AuthService){
+	constructor(private chat: ChatService, private auth: AuthService, public dialog: MatDialog){
 		this.chatService = chat;
 		this.authService = auth;
 		
@@ -44,13 +46,15 @@ export class UserListComponent implements OnInit{
 					this.authService.authUser().subscribe(
 						u => {
 							if(u){
-								ref.forEach( item => {
+								ref.forEach( item => {	
 									if( item['status'] == 'open' ){
 										if( item['type'] == 'private' ){
-											if( item['owner'] == u.email || item['guests'].indexOf(u.email) > -1 ){
-												this.channels.push(item);
+											if( item['owner'] && item['guests'] ){
+												if( item['owner'] == u.email || item['guests'].indexOf(u.email) > -1 ){
+													this.channels.push(item);
+												}
 											}
-										}else{
+										}else if( item['type'] == 'public' ){
 											this.general = item;
 										}
 									}
@@ -82,5 +86,29 @@ export class UserListComponent implements OnInit{
 	}
 
 	public getChildData(data){
+	}
+
+	public openDialog(): void{
+		const dialogRef = this.dialog.open( ChannelDialogComponent, {
+			data: {
+				guests: '',
+				title: '',
+				channelKey: ''
+			}
+		} );
+		// const dialogRef = this.dialog.open(ChannelDialogComponent, {
+		// 	data: {
+		// 		guests: '',
+		// 		title: '',
+		// 		channelKey: ''
+		// 	}
+		// });
+
+		// dialogRef.afterClosed().subscribe(result => {
+		// 	console.log('The dialog was closed');
+		// 	this.animal = result;
+		// });
+
+		console.log( 'open private channel!' );
 	}
 }
