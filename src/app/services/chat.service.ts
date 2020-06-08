@@ -69,6 +69,7 @@ export class ChatService {
 			channel	 	: channel,
 			reply		: replier
 		}
+		console.log(data);
 		const key = this.db.list(this.basePath).push(data).key;
 		const updated = {id: key}
 		this.db.object('/messages/' + key).update( updated ).catch( error => console.log( error ) );

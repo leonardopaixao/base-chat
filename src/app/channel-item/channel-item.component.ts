@@ -57,7 +57,6 @@ export class ChannelItemComponent implements OnInit, OnChanges {
 	}
 
 	public getChannelMessages(channel){
-		console.log( channel.id );
 		this.output.emit(channel.id);
 	}
 

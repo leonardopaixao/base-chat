@@ -50,8 +50,9 @@ html, body {
 }
 
 app-chatroom {
-    display: flex;
+    display: contents;
     flex-direction: column;
+    max-height: 89%;
 }
 
 app-navbar{

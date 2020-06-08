@@ -127,40 +127,55 @@ export class ChatFormComponent implements OnChanges, OnInit {
 		let regexpTagger = new RegExp('^@[a-z]+\.[a-z]{2,4}$');
 
 		this.taggedUsers = new Array();
-		this.chatService.getUsers().valueChanges().pipe().subscribe(
-			ref => {
-				if( ref ){
-					ref.forEach( e => {
+
+		this.chatService.getParticipants().then(
+			(element:any) => {
+				element.forEach( (e:any) => {
+					if( e ){
 						x.forEach( item => {
 							if( regexpTagger.test(item) ){
-								var tagged = item.replace( /@/, "" );				
+								var tagged = item.replace( /@/, "" );
 
-								if( e['userName'] === tagged ){
-									console.log('entrou!');
-		
-									console.log( e['userName'] );
-									console.log( tagged );
-									this.taggedUsers.push( e['email'] );
-								}
+								if( e.val()['username'] === tagged )
+									this.taggedUsers.push( e.val()['email'] );
 							}
-						})
-					});
-					this.chat.sendMessage(inputMessage, this.channelKey, this.taggedUsers, '');
-				}
+						});
+					}
+				});
+				this.chat.sendMessage(inputMessage, this.channelKey, this.taggedUsers, '');
 			}
 		);
+
+		// this.chatService.getUsers().valueChanges().pipe().subscribe(
+		// 	(ref:any) => {
+		// 		if( ref ){
+		// 			ref.forEach( e => {
+		// 				x.forEach( item => {
+		// 					console.log( 'item: ' + item );
+		// 					if( regexpTagger.test(item) ){
+		// 						var tagged = item.replace( /@/, "" );
+
+		// 						console.log( 'e: ' + e );
+		// 						if( e['username'] === tagged )
+		// 							this.taggedUsers.push( e['email'] );
+		// 					}
+		// 				})
+		// 			});
+		// 			this.chat.sendMessage(inputMessage, this.channelKey, this.taggedUsers, '');
+		// 		}
+		// 	}
+		// );
 		this.message = '';
 		this.taggedUsers = new Array();
 	}
 
-	public handleSubmit(event){
-		console.log( event.keyCode );
+	public handleSubmit(event:any){
 		this.markerTrigger = 'no';
 		if( event.keyCode === 50 ){ //@
-			// this.storeMessage = false;
-			console.log( event.key );
-			this.previewDialog.open();
-			this.markerTrigger = 'yes'; 
+			if( event.key == "@" ){
+				this.previewDialog.open();
+				this.markerTrigger = 'yes'; 
+			}
 		}
 
 

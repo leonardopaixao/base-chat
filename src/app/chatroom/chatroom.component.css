@@ -29,7 +29,7 @@
 
 .chatFormWrapper {
     display: flex;
-    height: 4%;
+    height: auto;
     background-color: #eee;
     z-index: 3;
 }

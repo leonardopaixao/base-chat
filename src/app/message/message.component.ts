@@ -63,21 +63,24 @@ export class MessageComponent implements OnInit{
 	}
 
 	replyMessage( messageContent ){
-		console.log( this.chatMessageObject );
-		const dialogRef = this.dialog.open(ReplierComponent, {
-			width: '600px',
-			height: '400px',
-			data: { message: messageContent }
-		  });
-
-		  
-	  
-		  dialogRef.afterClosed().subscribe( result => {
+		if( this.chatMessageObject ){
+			const dialogRef = this.dialog.open(
+				ReplierComponent, {
+					width: '600px',
+					height: '400px',
+					data: { message: messageContent }
+				  }
+			);
+	
 			  
-			if( result !== undefined ){
-				console.log(`Dialog result: ${result}`);
-				this.chatService.sendMessage( result, this.channelKey, [], this.chatMessageObject['id'] );
-			}
-		  });
+		  
+			dialogRef.afterClosed().subscribe( 
+				result => {
+					if( result !== undefined ){
+						this.chatService.sendMessage( result, this.chatMessageObject['channel'], [], this.chatMessageObject['id'] );
+					}
+				}
+			);
+		}
 	}
 }
