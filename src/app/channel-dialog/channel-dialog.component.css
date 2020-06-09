@@ -9,3 +9,20 @@
 .mat-checkbox-label{
     padding-top: 7% !important;
 }
+
+#dialog-buttons{
+    float: right;
+    height: 47px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 7px;
+    margin-right: 5px;
+}
+
+#participants-list{
+    margin-top: 10px;
+    min-height: 17em;
+    overflow: auto;
+    height: 75%;
+}

@@ -24,8 +24,13 @@ export class ChannelDialogComponent implements OnInit {
 	private checked 	 	: boolean = false;
 	private participantData : any;
 	private channelKey		: string;
+	private found 			: boolean;
 
 	constructor(public dialogRef: MatDialogRef<ChannelDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData,	private chatService: ChatService, private authService: AuthService){
+
+		console.log( data );
+
+		this.channelName = data.title;
 		this.channelKey = data.channelKey;
 
 		chatService.getParticipants().then(
@@ -67,25 +72,46 @@ export class ChannelDialogComponent implements OnInit {
 		this._data = data;
 	}
 
-	ngOnInit(){}
+	ngOnInit(){
+		console.log(  );
+	}
 
 	onNoClick(): void {
 		this.dialogRef.close();
 	}
 
-	toggle(event){
-		if( event.checked ){
-			this.selected.push(this.item);
-		}else{
-			const index = this.selected.indexOf(this.item);
-			if( index > -1 ){
-				this.selected.splice( index, 1 );
-			}
-		}
+	toggle( event ){
+		console.log( event );
+		// if( event.checked ){
+		// 	this.selected.push(this.item);
+		// }else{
+		// 	const index = this.selected.indexOf(this.item);
+		// 	if( index > -1 ){
+		// 		this.selected.splice( index, 1 );
+		// 	}
+		// }
 	}
 
-	info(participant){
-		this.item = participant.email;
+	changeArray( participant ){
+		
+		this.found = false;
+		
+		this.selected.forEach( e => {
+			if( e == participant.email )
+				this.found = true;		
+		} );
+
+		if( this.found ){
+			this.selected.forEach( e => {
+				if( e == participant.email ){
+					const index = this.selected.indexOf( participant.email );
+					if( index > -1 ){
+						this.selected.splice( index, 1 );
+					}
+				}
+			});
+		}else
+			this.selected.push( participant.email );
 	}
 
 	openChannel(){
@@ -101,6 +127,10 @@ export class ChannelDialogComponent implements OnInit {
 
 	close(){
 		this.dialogRef.close();
+	}
+
+	onNgModelChange( event ){
+		console.log( event );
 	}
 
 }

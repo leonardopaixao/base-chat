@@ -61,7 +61,25 @@ export class ChannelItemComponent implements OnInit, OnChanges {
 	}
 
 	public closeChannel(channel){
-		console.log( this.chatService.closeChannel( channel.id ) );
+		
+		if( this.channelOwner )
+			this.chatService.closeChannel( channel.id );
+		else{
+			const guests = channel.guests;
+			this.authService.authUser().subscribe( e => {
+				if( e ){
+					const index = guests.indexOf( e.email );
+
+					if( index > -1 ){
+						guests.splice( index, 1 );
+						
+						//update the session with the new guests.
+						this.chatService.updateChannel( channel.id, guests, channel.title );
+					}
+				}
+			});
+		}
+
 	}
 
 	public editChannel(channel){

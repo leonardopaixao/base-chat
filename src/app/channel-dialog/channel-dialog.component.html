@@ -7,21 +7,28 @@
 		</div>
 
 		<mat-card-subtitle>Participants</mat-card-subtitle>
-			
-		<div class="row" style="margin-top: 10px; max-height: 72%;">
-			<div class="col" style="height: 8%;">
-				<mat-card-content>
+
+		<div class="row" id="participants-list">
+			<div class="col" style="height: 35px;">
+				<!-- <mat-card-content>
 					<div *ngFor="let participant of participants">
-						<!-- <mat-checkbox color="primary" [checked]="checked" (change)="toggle($event)" (click)="info(participant)">{{ participant.firstName }} {{ participant.lastName }}</mat-checkbox> -->
+						<mat-checkbox color="primary" [checked]="checked" (change)="toggle($event)" (click)="info(participant)">{{ participant.firstName }} {{ participant.lastName }}</mat-checkbox>
 						<mat-checkbox color="primary" [checked]="participant.checked" (change)="toggle($event)" (click)="info(participant)">{{ participant.name }}</mat-checkbox>
 					</div>
-				</mat-card-content>
-				
+				</mat-card-content> -->
+				<mat-selection-list #list>
+					<mat-selection-list>
+						<mat-list-option *ngFor="let participant of participants" (click)="changeArray(participant)">
+							{{ participant.name }}
+						</mat-list-option>
+					</mat-selection-list>
+				</mat-selection-list>
+
 			</div>
 		</div>
 
 
-		<div class="row" style="margin-top: 50px; float: right;">
+		<div class="row" id="dialog-buttons">
 			<div class="col">
 				<div mat-dialog-actions style="height: fit-content; float: right;">
 					<button mat-raised-button (click)="openChannel()">Ok</button>

@@ -28,6 +28,8 @@ mat-dialog-container{
 .mat-dialog-container{
     height: 60% !important;
     width: 60em !important;
+    overflow: unset !important;
+    min-height: 31em !important;
 }
 
 .mat-form-field{
@@ -73,6 +75,13 @@ app-chat-form{
 
 .mat-checkbox-label{
     padding-top: 7% !important;
+}
+
+.mat-list-text{
+    padding-top: 11px !important;
+    font-weight: 500 !important;
+    font-family: sans-serif !important;
+    font-size: large !important;
 }
 /* html, body { height: 100% !important;  }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
