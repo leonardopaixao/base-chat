@@ -16,7 +16,14 @@ export class SignupFormComponent implements OnInit{
 	public firstName : string;
 	public lastName  : string;
 	
-	constructor(private authService: AuthService, private router: Router) {	}
+	constructor(private authService: AuthService, private router: Router){
+		authService.authUser().subscribe( e => {
+			if(e){
+				if( e.uid )
+					router.navigate(['chat']);
+			}
+		} );
+	}
 
 	ngOnInit(){
 		this.email = '';

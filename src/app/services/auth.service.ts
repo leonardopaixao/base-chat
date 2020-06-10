@@ -15,28 +15,35 @@ export class AuthService {
 
 	private user		: Observable<firebase.User>;
 	private authState	: any;
-	private userId		: string;
+	private uid		: string;
 
 	constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase, private router: Router ){
 		this.user = afAuth.authState;
+	}
+
+	isLoggedIn(){
+		return this.authState;
 	}
 
 	public authUser(){
 		return this.user;
 	}
 
+	autoLogin(token){
+		return this.afAuth.auth.signInWithCustomToken(token);
+	}
+
 	login(email: string, password: string){
 		return this.afAuth.auth.signInWithEmailAndPassword(email, password)
 				.then((firebaseUser) =>{
 					if( firebaseUser ){
+
 						this.authState = firebaseUser;
 						this.setUserStatus('online');
 						this.router.navigate(['chat']);
 					}
 				});
 	}
-
-
 
 	logout(){
 		this.setUserStatus('offline');

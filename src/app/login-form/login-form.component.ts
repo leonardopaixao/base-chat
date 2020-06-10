@@ -7,15 +7,25 @@ import { Router } from '@angular/router';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.css']
 })
+
 export class LoginFormComponent{
 
-  public email: string;
-  public password: string;
-  public errorMsg: string = '';
+	public email: string;
+	public password: string;
+	public errorMsg: string = '';
 
-  constructor(private authService: AuthService, private router: Router) { }
+	constructor(private authService: AuthService, private router: Router) {
+		authService.authUser().subscribe( e => {
+			if(e){
+				if( e.uid ){
+					router.navigate(['chat']);
 
-  login(){
-    this.authService.login(this.email, this.password).catch((error) => { this.errorMsg = error.message });
-  }
+				}
+			}
+		} );
+	}
+
+	login(){
+		this.authService.login(this.email, this.password).catch((error) => { this.errorMsg = error.message });
+	}
 }

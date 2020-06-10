@@ -1,4 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-chatroom',
@@ -11,7 +13,9 @@ export class ChatroomComponent implements OnInit, AfterViewChecked {
 
 	public channelKey : string = '-LnUqMAYvH2hAE9WA_iC';
 
-	constructor() {	}
+	constructor() {
+		
+	}
 
 	ngOnInit() { }
 
